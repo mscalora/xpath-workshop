@@ -1,0 +1,170 @@
+	html, body, div, span { padding: 0; margin: 0; }
+	html, body { 
+		font-family: sans-serif; 
+		height: 100%; 
+		min-height: 300px;
+		overflow: hidden; 
+		background: #BDACA0;
+	}
+	textarea, #out {
+		font-family: monospace;
+		background: #E0D4CB;
+		tab-size: 4;
+		padding: 4px;
+		resize: none;
+	}
+	.section {
+		position:absolute; 
+		display:block; 
+		width: -webkit-calc( 50% - 30px ); -moz-calc( 50% - 30px ); height: calc( 50% - 30px );
+		border: 2px solid #8F837A;
+		border-radius: 4px;
+	}
+	.label {
+		height: 2em;
+		color: dark-brown;
+		position:absolute; 
+		display:block; 
+	}
+	.label .tag {
+		font-size: 10px;
+	}
+	#out-label {
+		top: 0.75em;
+		left: -webkit-calc( 50% + 5px ); -moz-calc( 50% + 5px ); height: calc( 50% + 5px );
+	}
+	#out {
+		top: 3em;
+		left: -webkit-calc( 50% + 5px ); -moz-calc( 50% + 5px ); height: calc( 50% + 5px );
+		Xbackground: #fdd;
+		height: -webkit-calc( 60% - 4em ); -moz-calc( 60% - 4em ); height: calc( 60% - 4em );
+		overflow: auto;
+	}
+	#in-label {
+		top: 0.75em;
+		left: 10px;
+	}
+	#in {
+		top: 3em;
+		left: 10px;
+		height: -webkit-calc( 50% - 4em ); -moz-calc( 50% - 4em ); height: calc( 50% - 4em );
+	}
+	#context-label {
+		top: -webkit-calc( 60% + 0.75em ); -moz-calc( 60% + 0.75em ); height: calc(60% + 0.75em );
+		left: -webkit-calc( 50% + 5px ); -moz-calc( 50% + 5px ); height: calc( 50% + 5px );
+	}
+	#context {
+		top: -webkit-calc( 60% + 3em ); -moz-calc( 60% + 3em ); height: calc(60% + 3em );
+		left: -webkit-calc( 50% + 5px ); -moz-calc( 50% + 5px ); height: calc( 50% + 5px );;
+		height: -webkit-calc( 40% - 8em ); -moz-calc( 40% - 8em ); height: calc( 40% - 8em );
+	}
+	#xpath-label {
+		top: -webkit-calc( 50% + 0.75em ); -moz-calc( 50% + 0.75em ); height: calc(50% + 0.75em );
+		left: 10px;
+	}
+	#xpath {
+		top: -webkit-calc( 50% + 3em ); -moz-calc( 50% + 3em ); height: calc(50% + 3em );
+		left: 10px;
+		height: -webkit-calc( 50% - 8em ); -moz-calc( 50% - 8em ); height: calc( 50% - 8em );
+	}
+	#buttons {
+		position:absolute;
+		display:block; 
+		bottom: 7px;
+		left: 10px;		
+	}
+	#sig {
+		position:absolute;
+		display:block; 
+		bottom: 7px;
+		right: 10px;		
+	}
+	#buttons button, .action {
+		-moz-box-shadow: inset 0px 0px 17px 2px #fcf8f2;
+		-webkit-box-shadow: inset 0px 0px 17px 2px #fcf8f2;
+		box-shadow: inset 0px 0px 17px 2px #fcf8f2;
+		background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #BDB09A), color-stop(1, #FFF3DF) );
+		background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #BDB09A), color-stop(1, #FFF3DF) );
+		background: -moz-linear-gradient( center top, #BDB09A 5%, #FFF3DF 100% );
+		background-color: #BDB09A;
+		-moz-border-radius: 6px;
+		-webkit-border-radius: 6px;
+		border-radius: 6px;
+		border: 2px solid #997a43;
+		display: inline-block;
+		color: #59492d;
+		font-family: sans-serif;
+		font-size: 15px;
+		font-weight: bold;
+		padding: 4px 14px;
+		text-decoration: none;
+	}
+	#buttons button:hover, .action:hover {
+		background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #FFF3DF), color-stop(1, #BDB09A) );
+		background: -moz-linear-gradient( center top, #FFF3DF 5%, #BDB09A 100% );
+		background-color: #FFF3DF;
+	}
+	#buttons button:active, .action:active {
+		position: relative;
+		top: 1px;
+	}
+	.message-container {
+		position: absolute;
+		top: 0;
+		left: 100%;
+	}
+	.message-container .message {
+		position: absolute;
+		left: 20px;
+	}
+	.message-container .marker {
+		white-space: nowrap;
+		color: green;
+	}
+	.message-container .error .marker{
+		color: red;
+	}
+	.message-container .details {
+		position: absolute;
+		display: none;
+		top: 100%;
+		padding: 10px;
+		border-radius: 8px;
+		background: white;
+		border: 2px solid #321500; 
+		min-width: 200px;
+	}
+	.message-container:hover .error .details {
+		display: block;
+		z-index: 500;
+	}
+	.unexpected-result {
+		color: #616;
+	}
+
+	.xpath-expression {
+		margin-bottom: 2px;
+	}
+	.xpath-expression label {
+		font-weight: bold;
+	}
+	.xpath-expression label:after {
+		content: ":";
+	}
+	.resultset-type {
+		margin-bottom: 6px;
+		color: #007;
+	}
+	.xpath-expression label {
+		font-weight: normal;
+	}
+	.xpath-expression {
+		font-size: 120%;
+		font-weight: bold;
+	}
+	.result-list-item {
+		margin-top: 2px;
+	}
+	.result-list-item span {
+		color: #666;
+	}			
