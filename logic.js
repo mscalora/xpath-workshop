@@ -203,3 +203,69 @@
 
 		return false;
 	});
+	var vPer = 60;
+	var hPer = 55;
+	var hMap = {
+		'width': ['#tl-container, #bl-container', '#tr-container, #br-container'],
+		'left': ['#pos-container','']
+	}
+	var vMap = {
+		'height': ['#tl-container', '#bl-container'],
+		'top': ['#pos-container','']
+	}
+	function setHPer(hPer) {
+		hPer = Math.min(80,Math.max(20,hPer));
+		$.each(hMap,function(x){
+			$(this[0]).css(x,''+hPer+'%');
+			$(this[1]).css(x,''+(100-hPer)+'%');
+		});
+		localStorage.xpathWorkshopHPer = hPer;
+		return hPer;
+	}
+	function setVPer(vPer) {
+		vPer = Math.min(80,Math.max(20,vPer));
+		$.each(vMap,function(x){
+			$(this[0]).css(x,''+vPer+'%');
+			$(this[1]).css(x,''+(100-vPer)+'%');
+		});
+		localStorage.xpathWorkshopVPer = vPer;
+		return vPer;
+	}
+	if (localStorage.xpathWorkshopVPer) setVPer(localStorage.xpathWorkshopVPer);
+	if (localStorage.xpathWorkshopHPer) setHPer(localStorage.xpathWorkshopHPer);
+	function eventPos(e){
+		var x,y;
+		if (e.originalEvent.targetTouches) {
+			var t = e.originalEvent.targetTouches[0];
+			x = t.pageX;
+			y = t.pageY;			
+		} else {
+			x = e.clientX;
+			y = e.clientY;
+		}
+		return [x,y];
+	}
+	function beginPosDrag(begin) {
+		var body = $('body');
+		var pos = $('#pos-container').position();
+		var touch = begin.type.search(/touch/)>=0;
+		var start = eventPos(begin);
+		var startVPer = vPer;
+		var startHPer = hPer;
+		var offX = pos.left-start[0];
+		var offY = pos.top-start[1];
+		console.log("Start: "+start[0]+","+start[1]);
+		$(document).on(touch?'touchmove.dragger':'mousemove.dragger',function(move){
+			var now = eventPos(move);
+			console.log("Move: "+now[0]+","+now[1]+"  -  "+offX+","+offY+"  -  "+Math.round((now[0]+offX)/body.width()*100)+"%,"+Math.round((now[1]+offY)/body.height()*100)+'%');
+			hPer = setHPer((now[0]+offX)/body.width()*100);
+			vPer = setVPer((now[1]+offY)/body.height()*100);
+			return false;
+		}).one(touch?'touchend':'mouseup',function(end){
+			$(document).off('.dragger');
+			console.log('Off:');
+		});
+		return false;
+	}
+	$('#pos-control').on('mousedown touchstart',beginPosDrag);
+	

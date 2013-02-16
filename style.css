@@ -1,3 +1,20 @@
+	x#tl-container {
+		outline-offset: -2px;
+		outline: 2px dashed red;
+	}
+	x#tr-container {
+		outline-offset: -2px;
+		outline: 2px dashed green;
+	}
+	x#bl-container {
+		outline-offset: -2px;
+		outline: 2px dashed blue;
+	}
+	x#br-container {
+		outline-offset: -2px;
+		outline: 2px dashed purple;
+	}
+
 	html, body, div, span { padding: 0; margin: 0; }
 	html, body { 
 		font-family: sans-serif; 
@@ -16,68 +33,126 @@
 	.section {
 		position:absolute; 
 		display:block; 
-		width: -webkit-calc( 50% - 30px ); -moz-calc( 50% - 30px ); height: calc( 50% - 30px );
+		left: 0;
+		top: 33px;
+		bottom: 0;
 		border: 2px solid #8F837A;
 		border-radius: 4px;
+		box-sizing: border-box;
 	}
 	.label {
-		height: 2em;
 		color: dark-brown;
 		position:absolute; 
 		display:block; 
+		top: 5.5px;
+		left: 15px;
+		white-space: nowrap;
+		overflow: hidden;
+		right: 10px;
 	}
+	.right-container .label {
+		left: 10px;
+	}
+	
 	.label .tag {
 		font-size: 10px;
 	}
+	
+	.container {
+		position: absolute;
+	}
+	#tl-container {
+		top: 0;
+		left:0;
+		height: 60%;
+		width: 55%;
+	}
+	#tr-container {
+		top: 0;
+		right:0;
+		bottom: 132px;
+		width: 45%;
+	}
+	#bl-container {
+		bottom: 0;
+		left:0;
+		height: 40%;	
+		width: 55%;
+	}
+	#br-container {
+		bottom: 44px;
+		right:0;
+		height: 88px;	
+		width: 45%;
+	}
+	.top-container {
+	
+	}
+	#pos-container {
+		position:absolute;
+		left: 55%;
+		top: 60%;
+		width: 1px;
+		height: 1px;
+	}
+	#pos-control {
+		position:absolute;
+		width: 30px;
+		height: 30px;
+		right: 0;
+		top: 0;
+		text-align: center;
+		cursor: move;
+	}
+		
+	.right-container .section {
+		right: 10px;
+		left: 5px;
+	}
+	.bottom-container {
+	
+	}
+	.left-container .section {
+		right: 5px;
+		left: 10px;	
+	}
+	
 	#out-label {
-		top: 0.75em;
-		left: -webkit-calc( 50% + 5px ); -moz-calc( 50% + 5px ); height: calc( 50% + 5px );
 	}
 	#out {
-		top: 3em;
-		left: -webkit-calc( 50% + 5px ); -moz-calc( 50% + 5px ); height: calc( 50% + 5px );
-		Xbackground: #fdd;
-		height: -webkit-calc( 60% - 4em ); -moz-calc( 60% - 4em ); height: calc( 60% - 4em );
 		overflow: auto;
 	}
 	#in-label {
-		top: 0.75em;
-		left: 10px;
 	}
 	#in {
-		top: 3em;
-		left: 10px;
-		height: -webkit-calc( 50% - 4em ); -moz-calc( 50% - 4em ); height: calc( 50% - 4em );
 	}
 	#context-label {
-		top: -webkit-calc( 60% + 0.75em ); -moz-calc( 60% + 0.75em ); height: calc(60% + 0.75em );
-		left: -webkit-calc( 50% + 5px ); -moz-calc( 50% + 5px ); height: calc( 50% + 5px );
 	}
 	#context {
-		top: -webkit-calc( 60% + 3em ); -moz-calc( 60% + 3em ); height: calc(60% + 3em );
-		left: -webkit-calc( 50% + 5px ); -moz-calc( 50% + 5px ); height: calc( 50% + 5px );;
-		height: -webkit-calc( 40% - 8em ); -moz-calc( 40% - 8em ); height: calc( 40% - 8em );
 	}
 	#xpath-label {
-		top: -webkit-calc( 50% + 0.75em ); -moz-calc( 50% + 0.75em ); height: calc(50% + 0.75em );
-		left: 10px;
+		right: 30px;
 	}
 	#xpath {
-		top: -webkit-calc( 50% + 3em ); -moz-calc( 50% + 3em ); height: calc(50% + 3em );
-		left: 10px;
-		height: -webkit-calc( 50% - 8em ); -moz-calc( 50% - 8em ); height: calc( 50% - 8em );
+		bottom: 44px;
 	}
+	
 	#buttons {
 		position:absolute;
 		display:block; 
-		bottom: 7px;
-		left: 10px;		
+		bottom: 5px;
+		left: 0px;		
+		outline-offset: -2px;
+		width: 100%;
+		text-align: center;
+		white-space: nowrap;
 	}
 	#sig {
 		position:absolute;
 		display:block; 
-		bottom: 7px;
-		right: 10px;		
+		top: 7px;
+		right: 10px;
+		font-size: 10pt;
 	}
 	#buttons button, .action {
 		-moz-box-shadow: inset 0px 0px 17px 2px #fcf8f2;
