@@ -9,9 +9,9 @@ abiity to specify a context under which to run the XPath expression. The second 
 to clearly show the complete results of evavluating the expression with data types.
 Many of the tools I found show only the results converted to a string.
 
-## Features
+## Demo Site
 
-[Demo Site](http://sites.scalora.org/xpath)
+[scalora.org](http://sites.scalora.org/xpath) - my personal instance
 
 ## Features
 
