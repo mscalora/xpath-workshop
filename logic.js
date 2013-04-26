@@ -1,4 +1,3 @@
-
 	// lifted & cleaned up from from http://www.w3schools.com/xml/xml_validator.asp
 	var xt="", h3OK=1;
 	function checkErrorXML(x) {
@@ -139,7 +138,7 @@
 					} else if (it.resultType==XPathResult.NUMBER_TYPE) {
 						out.append(it.numberValue)
 					} else if (it.resultType==XPathResult.BOOLEAN_TYPE) {
-						out.append(it.booleanValue)
+						out.append(it.booleanValue ? 'true' : 'false')
 					} else if (it.resultType!==XPathResult.UNORDERED_NODE_ITERATOR_TYPE) {
 						out.append(it)
 					} else {
@@ -177,9 +176,9 @@
 								out.append(d(e('Unknown Node Type: '+o.nodeType+ ' '+o)));
 							}
 						}
-					}
-					if (!any) {
-						out.append(d(e('--Empty Set--'),'unexpected-result'));
+						if (!any) {
+							out.append(d(e('--Empty Set--'),'unexpected-result'));
+						}
 					}
 				} else {
 					out.append(d(e('--Unknown type--'),'unexpected-result'));
