@@ -16,7 +16,7 @@ Many of the tools I found show only the results converted to a string.
 ## Features
 
 * Evaluate a list of expressions
-* Save you input/test document, your xpath expression and you context expression
+* Save your input/test document, your xpath expression and you context expression
 * Ability to set a context via an xpath expression
 * See the result data type
 * See the datatype of each member of a collection result set
