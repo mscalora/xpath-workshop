@@ -3,7 +3,7 @@
 ## What is XPath Workshop?
 
 XPath Workshop is a very small web site that allows testing of XPath expressions. I
-created it because all of the other XPath expresin testers I found available lacked
+created it because all of the other XPath expression testers I found available lacked
 one or two features I needed for the project I was working on. The first was the
 abiity to specify a context under which to run the XPath expression. The second is
 to clearly show the complete results of evavluating the expression with data types.
