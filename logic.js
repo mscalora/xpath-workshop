@@ -1,4 +1,12 @@
 	// lifted & cleaned up from from http://www.w3schools.com/xml/xml_validator.asp
+	var debug = $('body').hasClass('debug');
+	if (debug && typeof console != 'undefined') {
+		function log(s) {
+			console.log(s);
+		}
+	} else {
+		function log(){}
+	}
 	var xt="", h3OK=1;
 	function checkErrorXML(x) {
 		xt="";
@@ -237,7 +245,7 @@
 		if (e.originalEvent.targetTouches) {
 			var t = e.originalEvent.targetTouches[0];
 			x = t.pageX;
-			y = t.pageY;			
+			y = t.pageY - $('#root').position().top;			
 		} else {
 			x = e.clientX;
 			y = e.clientY;
@@ -245,7 +253,9 @@
 		return [x,y];
 	}
 	function beginPosDrag(begin) {
-		var body = $('body');
+		var area = $('#root'); // page content area (involved in splitting)
+		var areaW = area.width();
+		var areaH = area.height();
 		var pos = $('#pos-container').position();
 		var touch = begin.type.search(/touch/)>=0;
 		var start = eventPos(begin);
@@ -253,18 +263,40 @@
 		var startHPer = hPer;
 		var offX = pos.left-start[0];
 		var offY = pos.top-start[1];
-		console.log("Start: "+start[0]+","+start[1]);
+		log("Start: "+start[0]+","+start[1]);
 		$(document).on(touch?'touchmove.dragger':'mousemove.dragger',function(move){
 			var now = eventPos(move);
-			console.log("Move: "+now[0]+","+now[1]+"  -  "+offX+","+offY+"  -  "+Math.round((now[0]+offX)/body.width()*100)+"%,"+Math.round((now[1]+offY)/body.height()*100)+'%');
-			hPer = setHPer((now[0]+offX)/body.width()*100);
-			vPer = setVPer((now[1]+offY)/body.height()*100);
+			log("Move: "+now[0]+","+now[1]+"  -  "+offX+","+offY+"  -  "+Math.round((now[0]+offX)/areaW*100)+"%,"+Math.round((now[1]+offY)/areaH*100)+'%');
+			hPer = setHPer((now[0]+offX)/areaW*100);
+			vPer = setVPer((now[1]+offY)/areaH*100);
 			return false;
 		}).one(touch?'touchend':'mouseup',function(end){
 			$(document).off('.dragger');
-			console.log('Off:');
+			log('Off:');
 		});
 		return false;
 	}
 	$('#pos-control').on('mousedown touchstart',beginPosDrag);
 	
+	
+$(function(){
+	function update( event, ui ) {
+		$('#font-size').text(''+ui.value+'px');
+		$('#in, #xpath, #context, #out').css('font-size',ui.value);
+		localStorage.xpathWorkshopFontSize = ''+ui.value;
+	}
+	$('#font-slider').slider({ 
+		min: 8,
+		max: 24,
+		step: 1,
+		value: 8.5,
+		change: update,
+		slide: update
+	});
+	var fontSize = $('#in').css("font-size").replace(/\D/g,'')*1
+	if ("xpathWorkshopFontSize" in localStorage) {
+		var size = 1*localStorage.xpathWorkshopFontSize;
+		fontSize = size>=$('#font-slider').slider("option","min") && size<=$('#font-slider').slider("option","max") ? size : fontSize; 
+	}
+	$('#font-slider').slider('value',fontSize);
+});
