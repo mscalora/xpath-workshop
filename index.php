@@ -7,12 +7,12 @@
 		<title>XPath Expression Tester</title>
 		<meta name="description" content="Online XPath Expression tester with detailed result set info and the ability to set the XPath expression context." />
 		<meta name="author" content="Mike Scalora" />
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
-		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 		<link class="skin" href="style.css" rel="stylesheet" type="text/css">
-		<link class="skin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css">		
+		<link class="skin" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css">		
 		<link href="fav.png" rel="shortcut icon">
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans:200,600' rel='stylesheet' type='text/css'>
+		<link href='//fonts.googleapis.com/css?family=Open+Sans:200,600' rel='stylesheet' type='text/css'>
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name = "viewport" content = "initial-scale = 1.0, user-scalable = no">
 	</head>
