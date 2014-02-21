@@ -191,7 +191,7 @@
 	
 	}
 	.left-container .section {
-		right: 5px;
+		width: calc( 100% - 15px);
 		left: 10px;	
 	}
 	
