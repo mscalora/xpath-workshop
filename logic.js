@@ -1,11 +1,9 @@
 	// lifted & cleaned up from from http://www.w3schools.com/xml/xml_validator.asp
 	var debug = $('body').hasClass('debug');
-	if (debug && typeof console != 'undefined') {
-		function log(s) {
+    function log(s) {
+    	if (debug && typeof console != 'undefined') {
 			console.log(s);
 		}
-	} else {
-		function log(){}
 	}
 	var xt="", h3OK=1;
 	function checkErrorXML(x) {
@@ -55,11 +53,11 @@
 	resultTypes[XPathResult.BOOLEAN_TYPE] = "BOOLEAN_TYPE";
 	resultTypes[XPathResult.UNORDERED_NODE_ITERATOR_TYPE] = "UNORDERED_NODE_ITERATOR_TYPE";
 	nodeTypes = {};
-	nodeTypes[1] = ["ELEMENT_NODE",];
-	nodeTypes[2] = ["ATTRIBUTE_NODE",];
-	nodeTypes[3] = ["TEXT_NODE",];
-	nodeTypes[4] = ["CDATA_SECTION_NODE",];
-	nodeTypes[9] = ["DOCUMENT_NODE",];
+	nodeTypes[1] = ["ELEMENT_NODE"];
+	nodeTypes[2] = ["ATTRIBUTE_NODE"];
+	nodeTypes[3] = ["TEXT_NODE"];
+	nodeTypes[4] = ["CDATA_SECTION_NODE"];
+	nodeTypes[9] = ["DOCUMENT_NODE"];
 	parser=new DOMParser();
 
 	// save for reset
@@ -135,10 +133,10 @@
 			var sep = false;
 			for(k = 0; k<xpaths.length; k++) if (xpaths[k].trim()!=='') {
 				xp = xpaths[k];
+                out.append(sep);
+                out.append(d('<label>XPath</label> <span>'+e(xp)+'</span>','xpath-expression'));
 				var it = xmlDoc.evaluate(xp,context,null,XPathResult.ANY_TYPE,null);
 				if (it.resultType in resultTypes) {
-					out.append(sep);
-					out.append(d('<label>XPath</label> <span>'+e(xp)+'</span>','xpath-expression'));
 					out.append(d(span(resultTypes[it.resultType],'keyword type-name'),'resultset-type'));
 					sep = '<hr/>'; 
 					if (it.resultType==XPathResult.STRING_TYPE) {
@@ -196,15 +194,14 @@
 			}
 			$('#xpath').focus();
 			out.effect("highlight",{},1000);
-		} catch(ex) {'messge' 
-			out.css('color','red');
-			out.append(e(
+		} catch(ex) {
+			out.append($('<div class="out-error">').append(e(
 				'Exception: '+
 				('name' in ex?ex.name:'UNKNOWN NAME')+
 				('code' in ex?' ('+ex.code+')\n\n':'(?)\n\n')+
 				('message' in ex?ex.message+'\n\n':'UNKNOWN MESSAGE\n\n')+
 				('stack' in ex?ex.stack:'')
-			));
+			)));
 			errFocus.effect("highlight",{'color':'#f88'},1000).focus();
 		}
 

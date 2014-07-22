@@ -7,7 +7,7 @@
 		<title>XPath Expression Tester</title>
 		<meta name="description" content="Online XPath Expression tester with detailed result set info and the ability to set the XPath expression context." />
 		<meta name="author" content="Mike Scalora" />
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 		<link class="skin" href="style.css" rel="stylesheet" type="text/css">
 		<link class="skin" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css">		
@@ -28,7 +28,8 @@
 		<div id='root'>
 			<div id='tl-container' class='container top-container left-container'>
 				<div id='in-label' class='label'>Input XML Test Document<div class='message-container'><div class='message'><span class='marker'></span><div class='details'></div></div></div></div>
-				<textarea id='in' class='section rw-section'>
+                <div class='section rw-section'>
+				    <textarea id='in' spellcheck='false'>
 <items>
 	<item id='bob1' url='root'>def</item>
 	<item ref='bob2' url='leaf'>ref</item>
@@ -40,11 +41,14 @@
 	<item><hr/><hr/><hr/></item>
 	<item><hr/>test<hr/></item>	
 </items>
-				</textarea>
+				    </textarea>
+                </div>
 			</div>
 			<div id='bl-container' class='container bottom-container left-container'>
 				<div id='xpath-label' class='label'>XPath Expressions <span class='tag'>One per line, relative to the result of the context expression</span></div>
-				<textarea id='xpath' class='section' autofocus="autofocus">item/text()|//@*|item</textarea>
+                <div class='section'>
+    				<textarea id='xpath' autofocus="autofocus" spellcheck='false'>item/text()|//@*|item</textarea>
+                </div>
 				<div id='buttons'>
 					<button id='eval'>Eval</button>
 					<button id='save' title='Save the Input XML, XPath and Context expressions'>Save</button>
@@ -58,7 +62,9 @@
 			</div>
 			<div id='br-container' class='container bottom-container right-container'>
 				<div id='context-label' class='label'>Context XPath Expression <span class='tag'>Sets the context (starting point) for the other expressions</span></div>
-				<textarea id='context' class='section'></textarea>
+                <div class='section'>
+                    <textarea id='context' spellcheck='false'></textarea>
+                </div>
 				<div id='controls'>
 					<div id='controls-bar'>
 						<div id='controls-strip'>
